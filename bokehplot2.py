@@ -16,6 +16,7 @@ from os.path import dirname, join
 
 #data_raw = pd.read_csv(join(dirname(__file__),'data','Motor_Vehicle_Collisions_Crashes.csv'))
 
+
 dataList=[]
 for i in range(0,2): #41
     dataList.append(pd.read_csv('splitData/Motor_Vehicle_Collisions_Crashes_'+str(i)+".csv", low_memory=False))
