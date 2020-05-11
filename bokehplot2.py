@@ -14,7 +14,14 @@ import bokeh.palettes as c
 
 from os.path import dirname, join
 
-data_raw = pd.read_csv(join(dirname(__file__),'data','Motor_Vehicle_Collisions_Crashes.csv'))
+#data_raw = pd.read_csv(join(dirname(__file__),'data','Motor_Vehicle_Collisions_Crashes.csv'))
+
+dataList=[]
+for i in range(0,2): #41
+    dataList.append(pd.read_csv('splitData/Motor_Vehicle_Collisions_Crashes_'+str(i)+".csv", low_memory=False))
+data_raw=dataList[0]
+for i in range(1,len(dataList)):
+    data_raw=pd.concat([data_raw,dataList[i]])
 
 
 injured_killed = list(['NUMBER OF PERSONS INJURED','NUMBER OF PERSONS KILLED', 'NUMBER OF PEDESTRIANS INJURED','NUMBER OF PEDESTRIANS KILLED',
